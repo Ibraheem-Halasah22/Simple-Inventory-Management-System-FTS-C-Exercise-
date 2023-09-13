@@ -2,13 +2,21 @@
 
 public class Product
 {
+    private static int idCounter = 0;
+
+    private static int GetNextId()
+    {
+        return idCounter++;
+    }
     public Product(int quantity, float price, string name)
     {
+        Id = GetNextId();
         Quantity = quantity;
         Price = price;
         Name = name;
     }
 
+    public int Id { get; set; }
     private int _quantity;
     public int Quantity
     {
