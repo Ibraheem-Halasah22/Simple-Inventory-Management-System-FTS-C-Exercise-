@@ -2,7 +2,7 @@
 
 public class Inventory
 {
-    private List<Product> _listOfProducts;
+    private readonly List<Product> _listOfProducts;
 
     public Inventory()
     {
@@ -20,9 +20,20 @@ public class Inventory
         return _listOfProducts;
     }
 
-    public List<Product> Search(string searchString)
+    public Product? GetById(int id)
     {
-        var matchesProducts = new List<Product>();
+        foreach (var product in _listOfProducts)
+        {
+            if (product.Id == id)
+                return product;
+        }
+
+        return null;
+    }
+
+    public List<Product?> Search(string searchString)
+    {
+        var matchesProducts = new List<Product?>();
         foreach (var product in _listOfProducts)
         {
             if(product.Name.ToUpper().StartsWith(searchString.ToUpper()))
@@ -30,5 +41,18 @@ public class Inventory
         }
 
         return matchesProducts;
+    }
+
+    public bool EditProduct(int id, int? quantity = null, float? price = null, string? name = null)
+    {
+        Product? productToEdit = GetById(id);
+
+        if (productToEdit == null) return false;
+        productToEdit.SetAll(
+            quantity:quantity?? productToEdit.Quantity,
+            price: price?? productToEdit.Price,
+            name: name?? productToEdit.Name
+            );
+        return true;
     }
 }
