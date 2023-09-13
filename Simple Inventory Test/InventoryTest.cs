@@ -64,14 +64,15 @@ public class InventoryTest
         var newName = "new Name ";
         var newPrice = 4.6f;
 
-        inventory.EditProduct(id, name: newName, price: newPrice);
 
         // Act 
+        var editResult = inventory.EditProduct(id, name: newName, price: newPrice);
         var editedProduct = inventory.GetById(id);
         var actName = editedProduct.Name;
         var actPrice = editedProduct.Price;
 
         // Assert
+        Assert.True(editResult);
         Assert.Equal(newName, actName);
         Assert.Equal(newPrice, actPrice);
     }
@@ -97,5 +98,50 @@ public class InventoryTest
 
         // Assert
         Assert.False(editResult);
+    }
+
+    [Fact]
+    public void ValidateDeleteProduct()
+    {
+        // Arrange
+        var inventory = new Inventory();
+        inventory.AddProduct(10, 10.5f, "name a");
+        inventory.AddProduct(100, 2.5f, "name b");
+        inventory.AddProduct(500, 10.3f, "third name");
+
+        int id = 2;
+
+        var productToDelete = inventory.GetById(id);
+
+        // Act 
+        var deleteResult = inventory.DeleteProduct(id);
+        var listOfProductsAfterDelete = inventory.GetAllProducts();
+        var removedProduct = inventory.GetById(id);
+
+        // Assert
+        Assert.True(deleteResult);
+        Assert.DoesNotContain(productToDelete, listOfProductsAfterDelete);
+        Assert.Null(removedProduct);
+    }
+    
+    [Fact]
+    public void InvalidateDeleteProduct()
+    {
+        // Arrange
+        var inventory = new Inventory();
+        inventory.AddProduct(10, 10.5f, "name a");
+        inventory.AddProduct(100, 2.5f, "name b");
+        inventory.AddProduct(500, 10.3f, "third name");
+
+        int id = 100;
+
+
+        // Act 
+        var deleteResult = inventory.DeleteProduct(id);
+        var listOfProductsAfterDelete = inventory.GetAllProducts();
+
+        // Assert
+        Assert.False(deleteResult);
+        Assert.Equal(3, listOfProductsAfterDelete.Count);
     }
 }

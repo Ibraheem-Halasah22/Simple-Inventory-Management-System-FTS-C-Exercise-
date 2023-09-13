@@ -45,7 +45,7 @@ public class Inventory
 
     public bool EditProduct(int id, int? quantity = null, float? price = null, string? name = null)
     {
-        Product? productToEdit = GetById(id);
+        var productToEdit = GetById(id);
 
         if (productToEdit == null) return false;
         productToEdit.SetAll(
@@ -53,6 +53,15 @@ public class Inventory
             price: price?? productToEdit.Price,
             name: name?? productToEdit.Name
             );
+        return true;
+    }
+
+    public bool DeleteProduct(int id)
+    {
+        var productToDelete = GetById(id);
+        if (productToDelete == null) return false;
+
+        _listOfProducts.Remove(productToDelete);
         return true;
     }
 }

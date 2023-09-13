@@ -5,5 +5,7 @@
     &lt;TestId&gt;xUnit::8B1D27BF-F5EB-4D07-8AD5-855CB2054057::net6.0::Simple_Inventory_Test.InventoryTest.ValidateSearchProduct&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::8B1D27BF-F5EB-4D07-8AD5-855CB2054057::net6.0::Simple_Inventory_Test.InventoryTest.ValidateUpdateProduct&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::8B1D27BF-F5EB-4D07-8AD5-855CB2054057::net6.0::Simple_Inventory_Test.InventoryTest.InvalidateUpdateProduct&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::8B1D27BF-F5EB-4D07-8AD5-855CB2054057::net6.0::Simple_Inventory_Test.InventoryTest.ValidateDeleteProduct&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::8B1D27BF-F5EB-4D07-8AD5-855CB2054057::net6.0::Simple_Inventory_Test.InventoryTest.InvalidateDeleteProduct&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
