@@ -4,7 +4,7 @@ public class Inventory
 {
     private List<Product> _listOfProducts;
 
-    Inventory()
+    public Inventory()
     {
         _listOfProducts = new List<Product>();
     }
