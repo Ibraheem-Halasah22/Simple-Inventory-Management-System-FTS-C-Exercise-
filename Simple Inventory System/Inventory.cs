@@ -14,5 +14,10 @@ public class Inventory
         var product = new Product(quantity, price, name);
         _listOfProducts.Add(product);
     }
-        
+
+    public List<Product> GetAllProducts()
+    {
+        return _listOfProducts;
+    }
+
 }
