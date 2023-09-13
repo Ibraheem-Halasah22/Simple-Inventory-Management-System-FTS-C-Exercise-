@@ -31,4 +31,25 @@ public class InventoryTest
         
         
     }
+
+    [Fact]
+    public void ValidateSearchProduct()
+    {
+        // Arrange
+        var inventory = new Inventory();
+        inventory.AddProduct(quantity:10, price:15.5f, "prod");
+        inventory.AddProduct(quantity:10, price:15.5f, "product v");
+        inventory.AddProduct(quantity:10, price:15.5f, "Product new");
+        inventory.AddProduct(quantity:10, price:15.5f, "pro vv");
+        inventory.AddProduct(quantity:10, price:15.5f, "productive prod");
+        inventory.AddProduct(quantity:10, price:15.5f, "not productive prod");
+
+        // Act
+        var result = inventory.Search("Prod");
+        
+        // Assert 
+
+        Assert.Equal(4, result.Count);
+
+    }
 }

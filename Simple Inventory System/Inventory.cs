@@ -20,4 +20,15 @@ public class Inventory
         return _listOfProducts;
     }
 
+    public List<Product> Search(string searchString)
+    {
+        var matchesProducts = new List<Product>();
+        foreach (var product in _listOfProducts)
+        {
+            if(product.Name.ToUpper().StartsWith(searchString.ToUpper()))
+               matchesProducts.Add(product);
+        }
+
+        return matchesProducts;
+    }
 }
