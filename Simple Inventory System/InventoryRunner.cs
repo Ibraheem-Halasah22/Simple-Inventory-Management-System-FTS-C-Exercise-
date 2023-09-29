@@ -111,6 +111,9 @@ public class InventoryRunner
                     Environment.Exit(0);
                     break;
                 
+                default:
+                    Console.Error.WriteLine("Please enter a valid choice");
+                    break;
             }
         }
     }
