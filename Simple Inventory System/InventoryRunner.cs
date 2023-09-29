@@ -18,6 +18,16 @@ public class InventoryRunner
 
         Console.WriteLine("6. Exit.");
     }
+    
+    public static void PrintProduct(Product product)
+    {
+        Console.WriteLine($"Product with ID {product.Id}");
+        Console.WriteLine($"Product's name is {product.Name}");
+        Console.WriteLine($"Product's price is {product.Price}");
+        Console.WriteLine($"Product's quantity is {product.Quantity}");
+
+        Console.WriteLine("---------------------------------------");
+    }
 
     public static void RunInventory()
     {
@@ -44,7 +54,6 @@ public class InventoryRunner
 
             switch (choice)
             {
-                
                 case ((int)InventoryRunningChoice.AddProduct):
                     Console.WriteLine("Please enter the product's name:");
                     var newProductName = Console.ReadLine();
@@ -86,8 +95,17 @@ public class InventoryRunner
                     inventory.AddProduct(name: newProductName, quantity: newProductQty, price: newProductPrice);
                     Console.WriteLine("Product added successfully!");
                     break;
-                
-                
+
+                case (int)InventoryRunningChoice.ViewAllItems:
+                    var productsList = inventory.GetAllProducts();
+                    if (productsList.Count == 0) Console.WriteLine("You have no products in the inventory");
+
+                    foreach (var product in productsList)
+                    {
+                        PrintProduct(product);
+                    }
+
+                    break;
             }
         }
     }
