@@ -106,6 +106,11 @@ public class InventoryRunner
                     }
 
                     break;
+                
+                case (int)InventoryRunningChoice.ExitTheProgram :
+                    Environment.Exit(0);
+                    break;
+                
             }
         }
     }
