@@ -58,8 +58,9 @@ public class InventoryTest
         inventory.AddProduct(100, 2.5f, "name b");
         inventory.AddProduct(500, 10.3f, "third name");
 
-        int id = 2;
-        var productToEdit = inventory.GetById(id);
+               
+        var productToEdit = inventory.Search("name").First();
+        var id = productToEdit.Id;
 
         var newName = "new Name ";
         var newPrice = 4.6f;
@@ -68,8 +69,8 @@ public class InventoryTest
         // Act 
         var editResult = inventory.EditProduct(id, name: newName, price: newPrice);
         var editedProduct = inventory.GetById(id);
-        var actName = editedProduct.Name;
-        var actPrice = editedProduct.Price;
+        var actName = editedProduct?.Name;
+        var actPrice = editedProduct?.Price;
 
         // Assert
         Assert.True(editResult);
@@ -109,9 +110,9 @@ public class InventoryTest
         inventory.AddProduct(100, 2.5f, "name b");
         inventory.AddProduct(500, 10.3f, "third name");
 
-        int id = 2;
 
-        var productToDelete = inventory.GetById(id);
+        var productToDelete = inventory.Search("name").First();
+        var id = productToDelete.Id;
 
         // Act 
         var deleteResult = inventory.DeleteProduct(id);

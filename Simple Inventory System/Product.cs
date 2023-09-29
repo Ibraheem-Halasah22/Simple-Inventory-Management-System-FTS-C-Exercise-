@@ -2,11 +2,11 @@
 
 public class Product
 {
-    private static int idCounter = 1;
+    private static int _idCounter = 1;
 
     private static int GetNextId()
     {
-        return idCounter++;
+        return _idCounter++;
     }
     public Product(int quantity, float price, string name)
     {
@@ -20,7 +20,7 @@ public class Product
         Price = price;
         Name = name;
     }
-    public int Id { get; set; }
+    public int Id { get;  }
     private int _quantity;
     public int Quantity
     {
