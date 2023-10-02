@@ -60,7 +60,7 @@ public class InventoryTest
 
                
         var productToEdit = inventory.Search("name").First();
-        var id = productToEdit.Id;
+        var id = productToEdit!.Id;
 
         var newName = "new Name ";
         var newPrice = 4.6f;
@@ -88,7 +88,6 @@ public class InventoryTest
         inventory.AddProduct(500, 10.3f, "third name");
 
         int id = 100;
-        var productToEdit = inventory.GetById(id);
         var newName = "new Name ";
         var newPrice = 4.6f;
 
@@ -112,7 +111,7 @@ public class InventoryTest
 
 
         var productToDelete = inventory.Search("name").First();
-        var id = productToDelete.Id;
+        var id = productToDelete!.Id;
 
         // Act 
         var deleteResult = inventory.DeleteProduct(id);
